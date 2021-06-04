@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -26,9 +26,14 @@
 
     socket.emit('mensaje', {nombre: 'luis'});
 
-    socket.on('mensaje', function(payload ){
-console.log('escuchando:', payload);
+    socket.on('nuevo-mensaje', function(payload ){
+     console.log('Escuchando:', payload);
     })
+
+    socket.on('active-bands', function(bands){
+        console.clear();
+    console.table( bands );
+    });
 
 </script>
 
