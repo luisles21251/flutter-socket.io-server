@@ -1,26 +1,24 @@
 
 const { io } = require('../index');
-const Bands = require('../models/bands');
-const Band = require('../models/band');
 
-const bands =  new Bands();
 
-bands.addBand( new Band('Queen'));
-bands.addBand(new  Band('maroon5'));
-bands.addBand(new  Band('Codpaly'));
-bands.addBand(new Band('Bohemia'));
+
 
 
 //Mensajes de sockets
 io.on('connection', client => {
 console.log('Cliente conectado');
 
+client.on('disconnect', () => {
+  console.log('Cliente desconectado');
+   });
 
-client.emit('active-bands', bands.getBands() );
+
+/*client.emit('active-bands', bands.getBands() );*/
 
 
 
-  client.on('disconnect', () => {
+ /* client.on('disconnect', () => {
   console.log('Cliente desconectado');
    });
 
@@ -53,7 +51,7 @@ bands.deleteBand(payload.id);
 io.emit('active-bands', bands.getBands());
 
 });
-
+*/
 
 /*client.on('nuevo-mensaje', (payload)=> {
  // console.log(payload);
